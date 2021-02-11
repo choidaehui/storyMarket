@@ -2,6 +2,7 @@ package net.item.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,21 +31,96 @@ public class ItemFrontController extends HttpServlet{
 		Action action = null;
 		ActionForward forward = null;
 		
+		if(command.equals("/itemWriteForm.it")) {
+			System.out.println("c: /itemWriteForm.it호출");
+			System.out.println("c: view 페이지로 이동");
+			
+		    forward = new ActionForward();
+		    forward.setPath("./item/itemWriteForm.jsp");
+			forward.setRedirect(false);
+			
+		}
 		
-	
+		else if(command.equals("/itemWriteAction.it")) {
+			System.out.println("c: /itemWriteAction.it 호출");
+			System.out.println("c: DB사용(o)->페이지 이동");
+			
+			action = new itemWriteAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		else if(command.equals("/itemListAction.it")) {
+			System.out.println("c: /itemListAction.it 호출");
+			System.out.println("c: DB사용(o)-> 페이지 이동");
+		
+			action = new itemListAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		else if(command.equals("/storymarket_main.it")) {
+		     System.out.println("c: /stroymarket_main.it 호출");
+		     System.out.println("c: DB사용(x)->뷰페이지 이동");
+		  
+		     forward = new ActionForward();
+		     
+		     forward.setPath("./item/storymarket_main.jsp");
+		     forward.setRedirect(false);
+		  }
+		else if(command.equals("/tradeItem.cu")) {
+			System.out.println("C: /tradeItem.cu 호출");
+			System.out.println("c: DB사용(o)-> 페이지이동");
+			
+			forward = new ActionForward();
+			
+			forward.setPath("./item/tradeItem.jsp");
+			forward.setRedirect(false);
+			
+		}
+		 
+	    System.out.println("가상주소처리(매핑) \n\n");
+/***************************************************************/
+	    if(forward != null) {
+	    	
+	    	if(forward.isRedirect()) {
+	    		System.out.println("c: 페이지 이동(sendRedirect)");
+	    		response.sendRedirect(forward.getPath());
+	    		
+	    	}else {
+	    		System.out.println("c: 페이지 이동(forward)");
+	    		
+	    		RequestDispatcher dis =
+	    				request.getRequestDispatcher(forward.getPath());
+	    		
+	    		dis.forward(request, response);
+	    		
+	    		
+	    	}
+	    	
+	    	
+	    	
+	    }
+		
+		System.out.println("3.페이지 이동 \n\n");
+		
+		
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@Override

@@ -9,6 +9,8 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  
    
     <!-- 회원관리 -->
     <servlet>
@@ -26,7 +28,7 @@
     <!-- 게시판관리 -->
     <servlet>
       <servlet-name>BoardFrontController</servlet-name>
-      <servlet-class>net.member.action.BoardFrontController</servlet-class>
+      <servlet-class>net.board.action.BoardFrontController</servlet-class>
     
     </servlet>
     
@@ -40,7 +42,7 @@
     <!-- 고객관리 -->
     <servlet>
       <servlet-name>CustomerFrontController</servlet-name>
-      <servlet-class>net.member.action.CustomerFrontController</servlet-class>
+      <servlet-class>net.customer.action.CustomerFrontController</servlet-class>
     
     </servlet>
     
@@ -54,7 +56,7 @@
     <!-- 판매관리 -->
     <servlet>
       <servlet-name>SellerFrontController</servlet-name>
-      <servlet-class>net.member.action.SellerFrontController</servlet-class>
+      <servlet-class>net.seller.action.SellerFrontController</servlet-class>
     
     </servlet>
     
@@ -67,7 +69,7 @@
     <!-- 상품관리 -->
     <servlet>
       <servlet-name>ItemFrontController</servlet-name>
-      <servlet-class>net.member.action.ItemFrontController</servlet-class>
+      <servlet-class>net.item.action.ItemFrontController</servlet-class>
     
     </servlet>
     
@@ -76,11 +78,19 @@
       <url-pattern>*.it</url-pattern>
       
     </servlet-mapping>
-  
-  
-  
-  
-  
-  
+    
+    <!-- 유저관리 -->
+     <servlet>
+      <servlet-name>UserFrontController</servlet-name>
+      <servlet-class>net.user.action.UserFrontController</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+      <servlet-name>UserFrontController</servlet-name>
+      <url-pattern>*.us</url-pattern>
+     </servlet-mapping>
+    
+    
+ 
   
 </web-app>

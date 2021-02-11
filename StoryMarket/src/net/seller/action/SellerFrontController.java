@@ -2,6 +2,7 @@ package net.seller.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,22 +31,105 @@ public class SellerFrontController extends HttpServlet{
 		Action action = null;
 		ActionForward forward = null;
 		
+		if(command.equals("/sellerWriteForm.se")) {
+		    System.out.println("c : /sellerWrite.se 호출! ");	
+			System.out.println("c : view 페이지로 이동");
+			
+			forward = new ActionForward();
+			forward.setPath("./seller/sellerWriteForm.jsp");
+			forward.setRedirect(false);
+				
+		}
+		else if(command.equals("/sellerSelection.se")) {
+			System.out.println("c: /sellerSelection.se 호출!");
+			System.out.println("c: view 페이지로 이동");
+			
+			forward = new ActionForward();
+			forward.setPath("./seller/sellerSelection.jsp");
+			forward.setRedirect(false);
+		}
 		
+		
+		else if(command.equals("/sellerWriteAction.se")) {
+			System.out.println("c: /sellerWriteAction.se 호출!");
+			System.out.println("c: DB사용(o)-> 페이지 이동");
+			
+			action = new sellerWriteAction();
+			
+			try {
+				forward = action.execute(request, response);
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+	         
 	
+			
+		}
+		
+			
+		else if(command.equals("/sellerList.se")) {
+			
+			System.out.println("c: /sellerList.se 호출!");
+			System.out.println("c: DB데이터를 가지고 jsp 페이지 이동");
+			
+			action = new sellerListAction();
+			
+			try {
+				forward = action.execute(request, response);
+				
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+			
+		}
+		else if(command.equals("/sellerMainAction.se")) {
+			System.out.println("c: /sellerMainAction.se호출");
+			System.out.println("c: DB데이터를 가지고 jsp페이지 이동");
+			
+			action = new sellerMainAction();
+			
+			try {
+				
+				forward = action.execute(request, response);
+			}catch(Exception e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		System.out.println("가상 주소처리(매핑) \n\n ");
+	/*************************************************************/
+		if(forward != null) {
+			
+			if(forward.isRedirect()) {
+				System.out.println("c : 페이지 이동(sendRedirect)");
+				response.sendRedirect(forward.getPath());
+				
+			}else {
+				System.out.println("c : 페이지 이동(forward)");
+				
+				RequestDispatcher dis =
+						request.getRequestDispatcher(forward.getPath());
+				
+				dis.forward(request, response);
+			}
+			
+			
+			
+			
+			
+		}
+		
+	   System.out.println("3.페이지 이동 \n\n");
+		
+		
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	@Override
 	protected void doGet(HttpServletRequest request, 
