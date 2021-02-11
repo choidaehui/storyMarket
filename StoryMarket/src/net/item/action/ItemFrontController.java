@@ -82,14 +82,22 @@ public class ItemFrontController extends HttpServlet{
 		     forward.setPath("./item/storymarket_main.jsp");
 		     forward.setRedirect(false);
 		  }
-		else if(command.equals("/tradeItem.cu")) {
-			System.out.println("C: /tradeItem.cu 호출");
+		else if(command.equals("/tradeItem.it")) {
+			System.out.println("C: /tradeItem.it 호출");
 			System.out.println("c: DB사용(o)-> 페이지이동");
 			
-			forward = new ActionForward();
+			action = new tradeItemAction();
 			
-			forward.setPath("./item/tradeItem.jsp");
-			forward.setRedirect(false);
+			try {
+				
+				forward = action.execute(request, response);
+			
+			} catch (Exception e) {
+
+				
+				e.printStackTrace();
+			}
+			
 			
 		}
 		 

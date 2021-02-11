@@ -1,4 +1,4 @@
-package net.customer.action;
+package net.user.action;
 
 import java.io.IOException;
 
@@ -8,13 +8,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class CustomerFrontController extends HttpServlet{
 
+public class UserFrontController extends HttpServlet{
+
+	
 	protected void doProcess(HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException {
-	
-		System.out.println("c: doProcess()호출-CustomerFrontController");
 		
+		System.out.println("c: doProcess()호출-UserFrontController");
+	
+		System.out.println("\n\n 가상주소계산하기");
 		
 		System.out.println("\n\n 가상주소계산하기");
 		String requestURI = request.getRequestURI();
@@ -29,23 +32,31 @@ public class CustomerFrontController extends HttpServlet{
 		Action action = null;
 		ActionForward forward = null;
 		
-		if(command.equals("/customerView.cu")) {
-			System.out.println("c: /customerView.cu 호출");
-			System.out.println("c: DB사용x-> 페이지 이동");
+		if(command.equals("/userContentView.us")) {
+			System.out.println("c: /userContentView.us 호출");
+			System.out.println("c: DB사용-> 페이지 이동");
 			
-			forward = new ActionForward();
-			forward.setPath("./customer/customerView.jsp");
-			forward.setRedirect(false);
+			action = new userContentViewAction();
 			
+		  try {	
+			   forward = action.execute(request, response);
+			
+		  }catch (Exception e) {
+
+		       e.printStackTrace();
+		  }
+		}
+		else if(command.equals("/storymarket_main.us")) {
+			  System.out.println("c: /storymarket_main.us 호출");
+			  System.out.println("c: DB사용(x)-> 메인 페이지 이동");
+			  
+			  forward = new ActionForward();
+			  forward.setPath("./user/storymarket_main.jsp");
+              forward.setRedirect(false);
+              
 		}
 		
 		
-		
-		
-		
-	
-	
-	
 		System.out.println("가상 주소처리(매핑) \n\n ");
 		/*************************************************************/
 			if(forward != null) {
@@ -63,9 +74,16 @@ public class CustomerFrontController extends HttpServlet{
 					dis.forward(request, response);
 				}
 				
+				
+				
+				
+				
 			}
 			
-			  System.out.println("3.페이지 이동 \n\n");
+			
+		   System.out.println("3.페이지 이동 \n\n");
+			
+			
 		}
 	
 	@Override
