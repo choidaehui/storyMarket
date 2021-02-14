@@ -62,7 +62,8 @@
      </tr>
    </table>
    
-   <input type="button" name="chat" value="<%=item_id %>님과의 대화" onclick="">
-
+   <form action="./customerchat.cu?toID=<%=item_id %>" method="post" target="_blank" rel="noopener">
+   <input type="submit" name="chat" value="<%=item_id %>님과의 대화">
+	</form>
 </body>
 </html>
