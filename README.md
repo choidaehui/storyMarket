@@ -1,5 +1,4 @@
 # storyMarket
+HTML, Javascript, CSS, Java, Jsp, Jquery
 
-#대희 ㅡ 여러분 환영합니다!!
-
-#대희 ㅡ 아이티윌 2강의실 2조
+# Try it 
