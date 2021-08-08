@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>StoryMarket</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  
+   
+    <!-- 회원관리 -->
+    <servlet>
+      <servlet-name>MemberFrontController</servlet-name>
+      <servlet-class>net.member.action.MemberFrontController</servlet-class>
+    
+    </servlet>
+    
+    <servlet-mapping>
+      <servlet-name>MemberFrontController</servlet-name>
+      <url-pattern>*.me</url-pattern>
+      
+    </servlet-mapping>
+    
+    <!-- 게시판관리 -->
+    <servlet>
+      <servlet-name>BoardFrontController</servlet-name>
+      <servlet-class>net.board.action.BoardFrontController</servlet-class>
+    
+    </servlet>
+    
+    <servlet-mapping>
+      <servlet-name>BoardFrontController</servlet-name>
+      <url-pattern>*.bo</url-pattern>
+      
+    </servlet-mapping>
+    
+    
+    <!-- 고객관리 -->
+ 
+  <servlet>
+    <servlet-name>CustomerFrontController</servlet-name>
+    <servlet-class>net.customer.action.CustomerFrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerFrontController</servlet-name>
+    <url-pattern>*.cu</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ChatsSubmitServlet</servlet-name>
+    <servlet-class>chats.ChatsSubmitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatsSubmitServlet</servlet-name>
+    <url-pattern>/chatsSubmitServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ChatsListServlet</servlet-name>
+    <servlet-class>chats.ChatsListServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ChatsListServlet</servlet-name>
+    <url-pattern>/chatsListServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>chatsBoxservlet</servlet-name>
+    <servlet-class>chats.chatsBoxservlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>chatsBoxservlet</servlet-name>
+    <url-pattern>/chatsBoxservlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>customerchat</display-name>
+    <servlet-name>customerchat</servlet-name>
+    <jsp-file>/chat2.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>customerchat</servlet-name>
+    <url-pattern>/customerchat.cu</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>customerchatBox.cu</display-name>
+    <servlet-name>customerchatBox.cu</servlet-name>
+    <jsp-file>/box.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>customerchatBox.cu</servlet-name>
+    <url-pattern>/customerchatBox.cu</url-pattern>
+  </servlet-mapping>
+  
+    
+    
+    <!-- 판매관리 -->
+    <servlet>
+      <servlet-name>SellerFrontController</servlet-name>
+      <servlet-class>net.seller.action.SellerFrontController</servlet-class>
+    
+    </servlet>
+    
+    <servlet-mapping>
+      <servlet-name>SellerFrontController</servlet-name>
+      <url-pattern>*.se</url-pattern>
+      
+    </servlet-mapping>
+    
+    <!-- 상품관리 -->
+    <servlet>
+      <servlet-name>ItemFrontController</servlet-name>
+      <servlet-class>net.item.action.ItemFrontController</servlet-class>
+    
+    </servlet>
+    
+    <servlet-mapping>
+      <servlet-name>ItemFrontController</servlet-name>
+      <url-pattern>*.it</url-pattern>
+      
+    </servlet-mapping>
+    
+    <!-- 유저관리 -->
+     <servlet>
+      <servlet-name>UserFrontController</servlet-name>
+      <servlet-class>net.user.action.UserFrontController</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+      <servlet-name>UserFrontController</servlet-name>
+      <url-pattern>*.us</url-pattern>
+     </servlet-mapping>
+     
+     <!-- 찜 관리 -->
+     <servlet>
+      <servlet-name>SelectFrontController</servlet-name>
+      <servlet-class>net.select.action.SelectFrontController</servlet-class>
+     </servlet>
+     
+     <servlet-mapping>
+      <servlet-name>SelectFrontController</servlet-name>
+      <url-pattern>*.sel</url-pattern>
+     </servlet-mapping>
+    
+    
+ 
+  
+</web-app>
